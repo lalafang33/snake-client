@@ -15,7 +15,8 @@ const connect = function () {
 
 // const connected = c
 conn.on('connect', () => {
-console.log('client is connected to server');
+  conn.write( `Name: SNK`); 
+console.log('Successfully connected to game server');
 });
 
 // const endSession = 

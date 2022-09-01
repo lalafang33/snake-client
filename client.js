@@ -13,16 +13,32 @@ const connect = function () {
   //   conn.write(message);
   // });
 
-// const connected = c
-conn.on('connect', () => {
-  conn.write( `Name: SNK`); 
-console.log('Successfully connected to game server');
-});
+  // const connected = 
+  conn.on('connect', () => {
+    conn.write(`Name: SNK`);
+    console.log('Successfully connected to game server');
+   });
 
-// const endSession = 
-conn.on('data', (data) => {
-console.log(data);
-});
+  conn.on('connect', () => {
+    setInterval(()=> {
+      conn.write("Move: up");
+    },1000);
+    setTimeout(() => {
+      
+    })
+  });
+
+  conn.on('connect', () => {
+    setInterval(()=> {
+      conn.write("Move: left");
+    },2000);
+
+  });
+
+  // const endSession = 
+  conn.on('data', (data) => {
+    console.log(data);
+  });
   return conn;
 };
 
@@ -30,5 +46,6 @@ console.log(data);
 // connect();
 
 module.exports = {
-  connect, 
+  connect,
 };
+

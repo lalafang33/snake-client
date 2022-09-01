@@ -1,4 +1,5 @@
 const net = require("net");
+const { setupInput } = require("./input");
 const connect = function () {
   const conn = net.createConnection({
     host: '192.168.50.206', // IP address here,
@@ -19,21 +20,23 @@ const connect = function () {
     console.log('Successfully connected to game server');
    });
 
-  conn.on('connect', () => {
-    setInterval(()=> {
-      conn.write("Move: up");
-    },1000);
-    setTimeout(() => {
-      
-    })
-  });
+   conn.on('connect', () => setupInput(conn));
 
-  conn.on('connect', () => {
-    setInterval(()=> {
-      conn.write("Move: left");
-    },2000);
+  // conn.on('connect', () => {
+  //   setInterval(()=> {
+  //     conn.write("Move: up");
+  //   },1000);
+  //   setTimeout(() => {
 
-  });
+  //   })
+  // });
+
+  // conn.on('connect', () => {
+  //   setInterval(()=> {
+  //     conn.write("Move: left");
+  //   },2000);
+
+  // });
 
   // const endSession = 
   conn.on('data', (data) => {

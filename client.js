@@ -20,6 +20,16 @@ const connect = function () {
     console.log('Successfully connected to game server');
    });
 
+   const send = (command) => {
+    conn.on('connect', () => {
+      conn.write(command);
+    })
+  }
+
+  //  conn.on('connect', () => {
+  //   conn.write('I love this game!');
+  //  });
+
    conn.on('connect', () => setupInput(conn));
 
   // conn.on('connect', () => {
